@@ -1,0 +1,35 @@
+###########################################################
+# storage - Persistent (and distributed) storage data
+###########################################################
+
+This directory contains interfaces and classes concerned with the saving
+and restoring of access point information to persistent and
+strongly consistent distributed store.
+
+TODO Should we create a separate topic for hosts and make it eventually consistent for preformance???
+
+----------------------------------------------------------
+On startup, the suggested sequence of events should be:
+
+1. Restore information from the persistent storage location (may be empty)
+
+2. Read in any configuration file.  Using a unique identifier for each item
+   being restored (say MAC address for an Access Point), update any existing
+   data (perhaps from step 1) with this data.
+
+   For this purposes, it is suggested that most AP/host information in a
+   configuration file be empty for an actual deployment.
+
+3. Register any appropriate host and device listeners
+
+4. Walk existing topology and look for any new access points or hosts of
+   interest.  Devices are of greatest importance since we do not know if
+   a host in the topology is a mobile host until we have read its access
+   point (device) in.
+
+   During this period, hosts and device events may occur.  The fun here will
+   be experimenting and figuring out the best thing to do.
+
+5. We are initialized.  Treat host/device events appropriately.  Hopefully
+   few Access Point device add/remove events will occur compared to mobile
+   host events.
