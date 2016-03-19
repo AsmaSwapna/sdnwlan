@@ -1,0 +1,56 @@
+{
+    "apps": {
+        "net.bcsw.sdnwlan" : {
+            "sdnwlan": {
+                "defGwFlowPriority"      : 10000,
+                "roamingUnicastPriority" : 20000,
+                "removedHostTimeout"     : 15,
+                "accessPoints": [
+                    {
+                        "name"         : "node1",
+                        "mac"          : "00:00:00:00:00:01",
+                        "connections"  : [ "of:a1a1a1a1a1a1a1a1/1" ],
+                        "ingressVlans" : [ 100 ],
+                        "gateways" : [
+                            {
+                                "name"             : "AccessPoint_A_gateway",
+                                "subnetAndAddress" : "192.168.0.1/24",
+                                "ingressVlans"     : [ 100 ]
+                            }
+                        ],
+                        "longitude" : 0.0,
+                        "latitude"  : 90.0,
+                        "altitude"  : 0.0,
+                        "otherVids" : [
+                            { "gateway": "192.168.1.1/24", "vlans": [ 201 ] },
+                            { "gateway": "192.168.2.1/24", "vlans": [ 301 ] }
+                        ]
+                    },
+                    {
+                        "name"         : "node2",
+                        "mac"          : "00:00:00:00:00:02",
+                        "connections"  : [ "of:a2a2a2a2a2a2a2a2/1" ],
+                        "ingressVlans" : [ 200 ],
+                        "gateways" : [
+                            {
+                                "name"             : "AccessPoint_B1_gateway",
+                                "subnetAndAddress" : "192.168.1.1/24",
+                                "ingressVlans" : [ 200 ]
+                            },
+                            {
+                                "name"             : "AccessPoint_B2_gateway",
+                                "subnetAndAddress" : "192.168.2.1/24"
+                            }
+                        ],
+                        "longitude" : 0.1,
+                        "latitude"  : 90.1,
+                        "altitude"  : 10.0,
+                        "otherVids" : [
+                            { "gateway": "192.168.0.1/24", "vlans": [ 80 ] }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}
